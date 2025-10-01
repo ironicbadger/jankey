@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ironicbadger/jankey/pkg/models"
+	"github.com/ironicbadger/jankey/internal/models"
 )
 
 const (

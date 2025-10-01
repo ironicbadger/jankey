@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ironicbadger/jankey/pkg/models"
+	"github.com/ironicbadger/jankey/internal/models"
 	"gopkg.in/yaml.v3"
 )
 

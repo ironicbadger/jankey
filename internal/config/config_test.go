@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ironicbadger/jankey/pkg/models"
+	"github.com/ironicbadger/jankey/internal/models"
 )
 
 func TestGetDefaultConfig(t *testing.T) {
@@ -19,8 +19,9 @@ func TestGetDefaultConfig(t *testing.T) {
 		t.Error("Default config should have OAuth client secret path")
 	}
 
-	if len(cfg.AuthKeyDefaults.Tags) == 0 {
-		t.Error("Default config should have at least one tag")
+	// Tags are optional for API key mode (default), so empty is fine
+	if cfg.AuthKeyDefaults.Tags == nil {
+		t.Error("Default config tags should not be nil (can be empty slice)")
 	}
 
 	if cfg.AuthKeyDefaults.ExpiryDays <= 0 || cfg.AuthKeyDefaults.ExpiryDays > 90 {
@@ -54,18 +55,21 @@ func TestValidateConfig(t *testing.T) {
 			wantError: true,
 		},
 		{
-			name: "missing tags",
+			name: "valid config with API key",
 			config: &models.Config{
+				APIKey: models.APIKeyConfig{
+					PassPathAPIKey: "test/api-key",
+				},
 				OAuth: models.OAuthConfig{
-					PassPathClientID:     "test/id",
-					PassPathClientSecret: "test/secret",
+					PassPathClientID:     "",
+					PassPathClientSecret: "",
 				},
 				AuthKeyDefaults: models.AuthKeyDefaults{
 					ExpiryDays: 7,
 					Tags:       []string{},
 				},
 			},
-			wantError: true,
+			wantError: false,
 		},
 		{
 			name: "invalid tag format",

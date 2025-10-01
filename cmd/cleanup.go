@@ -10,7 +10,7 @@ import (
 	"github.com/ironicbadger/jankey/internal/oauth"
 	"github.com/ironicbadger/jankey/internal/pass"
 	"github.com/ironicbadger/jankey/internal/tailscale"
-	"github.com/ironicbadger/jankey/pkg/models"
+	"github.com/ironicbadger/jankey/internal/models"
 )
 
 var (
