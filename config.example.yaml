@@ -1,0 +1,12 @@
+oauth:
+  pass_path_client_id: "tailscale/oauth-client-id"
+  pass_path_client_secret: "tailscale/oauth-client-secret"
+
+auth_key_defaults:
+  ephemeral: false
+  reusable: false
+  preauthorized: true
+  expiry_days: 7
+  tags:
+    - "tag:container"
+    - "tag:ephemeral-services"
