@@ -17,6 +17,10 @@ The name `jankey` is a play on words for "gen key" and "janky".
 - 🔄 **Automatic retry logic** with exponential backoff
 - 🎯 **Interactive configuration wizard** for easy setup
 
+## Demo
+
+![jankey demo](demo.gif)
+
 ## Installation
 
 ### From Source
